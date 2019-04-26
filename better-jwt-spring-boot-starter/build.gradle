@@ -5,5 +5,5 @@ plugins {
 version 'io.better'
 
 dependencies {
-    
+    compile('org.springframework.boot:spring-boot-starter-web')
 }
