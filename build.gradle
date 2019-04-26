@@ -1,0 +1,72 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.18.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://repo.spring.io/milestone"
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/spring'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+configure(subprojects) {
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'io.better'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://repo.spring.io/milestone"
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/spring'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly('org.springframework.boot:spring-boot-configuration-processor')
+        compileOnly('org.projectlombok:lombok')
+        compile('org.apache.commons:commons-lang3:3.7')
+        compile('com.alibaba:fastjson:1.2.51')
+
+        testCompile('org.springframework.boot:spring-boot-starter-test')
+    }
+
+    jar {
+        enabled = true
+    }
+}
+
+configure(subprojects) {
+    /**
+     * 创建src
+     */
+    task srcInit() {
+        sourceSets*.java.srcDirs*.each { it.mkdirs() }
+        sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+    }
+}
