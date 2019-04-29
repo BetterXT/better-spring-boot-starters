@@ -1,9 +1,13 @@
 rootProject.name = 'better-spring-boot-starters'
 include 'better-spring-boot-test'
-
-
-project(':better-spring-boot-test').projectDir = file("test/better-spring-boot-test")
 include 'better-message-callback-spring-boot-starter'
 include 'better-jwt-spring-boot-starter'
 include 'better-security-spring-boot-starter'
+include 'better-message-callback-core'
+include 'better-http-client-core'
+
+project(':better-spring-boot-test').projectDir = file("test/better-spring-boot-test")
+project(':better-message-callback-core').projectDir = file("core/better-message-callback-core")
+project(':better-http-client-core').projectDir = file("core/better-http-client-core")
+include 'better-http-client-spring-boot-starter'
 
