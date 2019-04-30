@@ -5,5 +5,5 @@ plugins {
 version 'io.better'
 
 dependencies {
-    
+    compile project(':better-http-client-core')
 }
